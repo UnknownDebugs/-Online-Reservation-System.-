@@ -1,0 +1,686 @@
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		String unavailableDates = "";
+        String name = "";
+        String contact = "";
+        String email = "";
+        String date = "";
+        int pax = 0;
+        String roomName = "";
+        int roomPrice = 0;
+
+		do {
+			System.out.println(" ◜━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◝");
+			System.out.println("            ( Online Reservation System )         ");
+			System.out.println(" 🌟 Thanks for coming in Sweeties Lambingan Hotel! 🌟");
+			System.out.println(" ◞━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◟");
+			System.out.println("┌───────────────────────────────────┐");
+			System.out.println("│          ✧ ☰ Main Menu ☰ ✧           │");
+			System.out.println("│   Please check it so you have an idea  │");
+			System.out.println("├────┬──────────────────────────────┤");
+			System.out.println("│ (1) │ Reservation   (Room reservation) │");
+			System.out.println("├────┼──────────────────────────────┤");
+			System.out.println("│ (2) │ About us     (Owner information) │");
+			System.out.println("├────┼──────────────────────────────┤");
+			System.out.println("│ (3) │ Details      (Hotel information) │");
+			System.out.println("├────┼──────────────────────────────┤");
+			System.out.println("│ (4) │ Exit              (Out in hotel) │");
+			System.out.println("└────┴──────────────────────────────┘");
+
+			System.out.println("┌───────────────────────┐");
+			System.out.print("│ Enter your choice:  ");
+			String mainMenuChoice = input.nextLine();
+			System.out.println("└───────────────────────┘");
+
+			System.out.println("                                                                                 ");
+
+			switch (mainMenuChoice) {
+
+			case "1":
+				boolean backToMain = false;
+
+				while (!backToMain) {
+					System.out.println("┌─────────────────────────────────┐");
+					System.out.println("│   🔶 » Please choose your room       │");
+					System.out.println("│      you would like preferred. « 🔶  │");
+					System.out.println("└─────────────────────────────────┘");
+					System.out.println("┌──────────────────────────────────┐");
+					System.out.println("│ ☰ input (A)-Start reservation        │");
+					System.out.println("├──────────────────────────────────┤");
+					System.out.println("│ ⟲ Input (B)-Back                     │");
+					System.out.println("└──────────────────────────────────┘");
+
+					String view = "";
+					while (true) {
+						System.out.println("┌───────────────────────┐");
+						System.out.print("│ Enter your choice:  ");
+						view = input.nextLine();
+						System.out.println("└───────────────────────┘");
+						System.out.println("                                                                                 ");
+						if (view.equalsIgnoreCase("A")) {
+							break;
+						}
+						else if (view.equalsIgnoreCase("B")) {
+							backToMain = true;
+							break;
+						}
+						else {
+							System.out.println("Invalid type.");
+						}
+					}
+
+					if (backToMain) {
+						break;
+					}
+					
+					boolean returnToRoomChoice = false;
+					while(!returnToRoomChoice) {
+						roomName = "";
+						roomPrice = 0;
+						boolean validRoom = false;
+	
+						while (!validRoom) {
+							System.out.println("┌─────────────────────────────────────┐");
+							System.out.println("│            🔶 ROOM DETAILS 🔶            │");
+							System.out.println("├─────────────────────────────────────┤");
+							System.out.println("│ (1) ➜ NORMAL ROOM           ₱950 / Night │");
+							System.out.println("│                               4 guests 𐀪  │");
+							System.out.println("│ Includes:                                 │");
+							System.out.println("│ • Single bed                              │");
+							System.out.println("│ • Electric fan                            │");
+							System.out.println("│ • Shared bathroom                         │");
+							System.out.println("│ • Basic toiletries (upon request)         │");
+							System.out.println("│ ========================================  │");
+							System.out.println("│ (2) ➜ STANDARD ROOM      ₱1,500 / Night  │");
+							System.out.println("│                               6 guests 𐀪  │");
+							System.out.println("│ Includes:                                 │");
+							System.out.println("│ • Double bed                              │");
+							System.out.println("│ • Air-conditioning                        │");
+							System.out.println("│ • Private bathroom (hot & cold)           │");
+							System.out.println("│ • Cable TV and free Wi-Fi                 │");
+							System.out.println("│ ========================================  │");
+							System.out.println("│ (3) ➜ LUXURY ROOM        ₱2,800 / Night  │");
+							System.out.println("│                               8 guests 𐀪  │");
+							System.out.println("│ Includes:                                 │");
+							System.out.println("│ • Queen size bed with clean lines         │");
+							System.out.println("│ • Full air-conditioned                    │");
+							System.out.println("│ • Private bathroom with toiletries        │");
+							System.out.println("│ • Free bottled water and coffee           │");
+							System.out.println("│ ========================================  │");
+							System.out.println("│ (4) ➜ VIP ROOM           ₱4,500 / Night  │");
+							System.out.println("│                             10 guests 𐀪   │");
+							System.out.println("│ Includes:                                 │");
+							System.out.println("│ • King size bed                           │");
+							System.out.println("│ • Sofa set and living area                │");
+							System.out.println("│ • 55\" Smart TV in living area             │");
+							System.out.println("│ • Mini bar                                │");
+							System.out.println("└─────────────────────────────────────┘");
+	
+							System.out.println("┌────────────────────────────┐");
+							System.out.println("│ Input room number (1,2,3,or 4) │");
+							System.out.println("├────────────────────────────┤");
+							System.out.println("│ ⟲ Input (B)-Back               │");
+							System.out.println("└────────────────────────────┘");
+							System.out.println("┌──────────────────────────┐");
+							System.out.print("│ Enter your preferred room: ");
+							String roomChoice = input.nextLine();
+							System.out.println("└──────────────────────────┘");
+							System.out.println("                                                                                 ");
+	
+							if (roomChoice.equalsIgnoreCase("B")) {
+								returnToRoomChoice = true;
+								break;
+							}
+	
+							switch (roomChoice) {
+	
+							case "1":
+								roomName = "NORMAL ROOM";
+								roomPrice = 950;
+								validRoom = true;
+								break;
+	
+							case "2":
+								roomName = "STANDARD ROOM";
+								roomPrice = 1500;
+								validRoom = true;
+								break;
+	
+							case "3":
+								roomName = "LUXURY ROOM";
+								roomPrice = 2800;
+								validRoom = true;
+								break;
+	
+							case "4":
+								roomName = "VIP ROOM";
+								roomPrice = 4500;
+								validRoom = true;
+								break;
+	
+							default:
+								System.out.println("Invalid room choice. Please enter a number from 1 to 4.");
+							}
+						}
+						
+						if(returnToRoomChoice) {
+							break;
+						}
+	
+						int paxLimit = 0;
+						if (roomName.equals("NORMAL ROOM")) {
+							paxLimit = 4;
+						} else if (roomName.equals("STANDARD ROOM")) {
+							paxLimit = 6;
+						} else if (roomName.equals("LUXURY ROOM")) {
+							paxLimit = 8;
+						} else if (roomName.equals("VIP ROOM")) {
+							paxLimit = 10;
+						}
+	
+						System.out.println("===================================================");
+						System.out.println("You have selected: " + roomName + " at ₱" + roomPrice + " per night.");
+						System.out.println(" ➜ Pax limit for this room: " + paxLimit);
+						System.out.println("===================================================");
+						System.out.println("                                                                                 ");
+						
+						boolean backToRoom = false;
+						while(!backToRoom) {
+							System.out.println("┌─────────────────────────────────┐");
+							System.out.println("│⬇️ Choose the number you would like ⬇️│");
+							System.out.println("├─────────────────────────────────┤");
+							System.out.println("│  August    │ September  │  October   │");
+							System.out.println("│     1      │     2      │     3      │");
+							System.out.println("├─────────────────────────────────┤");
+							System.out.println("│  November  │  December  │    Year:   │");
+							System.out.println("│     4      │     5      │    2025    │");
+							System.out.println("└─────────────────────────────────┘");
+	
+							System.out.println("┌──────────────────────────────────┐");
+							System.out.println("│ ☰ Choose month number (1,2,3,4,5)    │");
+							System.out.println("├──────────────────────────────────┤");
+							System.out.println("│ ⟲ Input (B)-Back to choices room     │");
+							System.out.println("└──────────────────────────────────┘");
+							System.out.println("┌───────────────────────┐");
+							System.out.print("│ Enter your choice:  ");
+							String month = input.nextLine();
+							System.out.println("└───────────────────────┘");
+	
+							if (month.equalsIgnoreCase("B")) {
+								backToRoom = true;
+								break;
+							}
+	
+							String monthName = "";
+							String days = "";
+							int startDayOfWeek = 0;
+	
+							if (month.equals("1") || month.equals("2") || month.equals("3") || month.equals("4") || month.equals("5")) {
+								switch (month) {
+								case "1":
+									monthName = "August";
+									startDayOfWeek = 5;
+									System.out.println("                                                                                 ");
+									System.out.println("=================================");
+									System.out.println("You have selected: August 2025");
+									System.out.println("=================================");
+									System.out.println("                                                                                 ");
+									System.out.println("┌────────────────────────────────────┐");
+									System.out.println("│ Mon │ Tue │ Wed │ Thu │ Fri │ Sat │ Sun │");
+									System.out.println("├────────────────────────────────────┤");
+									System.out.println("│     │     │     │     │  1  │  2  │  3  │");
+									System.out.println("├────────────────────────────────────┤");
+									System.out.println("│  4  │  5  │  6  │  7  │  8  │  9  │ 10  │");
+									System.out.println("├────────────────────────────────────┤");
+									System.out.println("│ 11  │ 12  │ 13  │ 14  │ 15  │ 16  │ 17  │");
+									System.out.println("├────────────────────────────────────┤");
+									System.out.println("│ 18  │ 19  │ 20  │ 21  │ 22  │ 23  │ 24  │");
+									System.out.println("├────────────────────────────────────┤");
+									System.out.println("│ 25  │ 26  │ 27  │ 28  │ 29  │ 30  │ 31  │");
+									System.out.println("└────────────────────────────────────┘");
+									days = "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31";
+									break;
+								case "2":
+									monthName = "September";
+									startDayOfWeek = 1;
+									System.out.println("                                                                                 ");
+									System.out.println("==================================");
+									System.out.println("You have selected: September 2025");
+									System.out.println("==================================");
+									System.out.println("                                                                                 ");
+									System.out.println("┌────────────────────────────────────┐");
+									System.out.println("│ Mon │ Tue │ Wed │ Thu │ Fri │ Sat │ Sun │");
+									System.out.println("├────────────────────────────────────┤");
+									System.out.println("│  1  │  2  │  3  │  4  │  5  │  6  │  7  │");
+									System.out.println("├────────────────────────────────────┤");
+									System.out.println("│  8  │  9  │ 10  │ 11  │ 12  │ 13  │ 14  │");
+									System.out.println("├────────────────────────────────────┤");
+									System.out.println("│ 15  │ 16  │ 17  │ 18  │ 19  │ 20  │ 21  │");
+									System.out.println("├────────────────────────────────────┤");
+									System.out.println("│ 22  │ 23  │ 24  │ 25  │ 26  │ 27  │ 28  │");
+									System.out.println("├────────────────────────────────────┤");
+									System.out.println("│ 29  │ 30  │     │     │     │     │     │");
+									System.out.println("└────────────────────────────────────┘");
+									days = "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30";
+									break;
+								case "3":
+									monthName = "October";
+									startDayOfWeek = 3;
+									System.out.println("                                                                                 ");
+									System.out.println("================================");
+									System.out.println("You have selected: October 2025");
+									System.out.println("================================");
+									System.out.println("                                                                                 ");
+									System.out.println("┌────────────────────────────────────┐");
+									System.out.println("│ Mon │ Tue │ Wed │ Thu │ Fri │ Sat │ Sun │");
+									System.out.println("├────────────────────────────────────┤");
+									System.out.println("│     │     │  1  │  2  │  3  │  4  │  5  │");
+									System.out.println("├────────────────────────────────────┤");
+									System.out.println("│  6  │  7  │  8  │  9  │ 10  │ 11  │ 12  │");
+									System.out.println("├────────────────────────────────────┤");
+									System.out.println("│ 13  │ 14  │ 15  │ 16  │ 17  │ 18  │ 19  │");
+									System.out.println("├────────────────────────────────────┤");
+									System.out.println("│ 20  │ 21  │ 22  │ 23  │ 24  │ 25  │ 26  │");
+									System.out.println("├────────────────────────────────────┤");
+									System.out.println("│ 27  │ 28  │ 29  │ 30  │ 31  │     │     │");
+									System.out.println("└────────────────────────────────────┘");
+									days = "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31";
+									break;
+								case "4":
+									monthName = "November";
+									startDayOfWeek = 6;
+									System.out.println("                                                                                 ");
+									System.out.println("==================================");
+									System.out.println("You have selected: November 2025");
+									System.out.println("==================================");
+									System.out.println("                                                                                 ");
+									System.out.println("┌────────────────────────────────────┐");
+									System.out.println("│ Mon │ Tue │ Wed │ Thu │ Fri │ Sat │ Sun │");
+									System.out.println("├────────────────────────────────────┤");
+									System.out.println("│     │     │     │     │     │  1  │  2  │");
+									System.out.println("├────────────────────────────────────┤");
+									System.out.println("│  3  │  4  │  5  │  6  │  7  │  8  │  9  │");
+									System.out.println("├────────────────────────────────────┤");
+									System.out.println("│ 10  │ 11  │ 12  │ 13  │ 14  │ 15  │ 16  │");
+									System.out.println("├────────────────────────────────────┤");
+									System.out.println("│ 17  │ 18  │ 19  │ 20  │ 21  │ 22  │ 23  │");
+									System.out.println("├────────────────────────────────────┤");
+									System.out.println("│ 24  │ 25  │ 26  │ 27  │ 28  │ 29  │ 30  │");
+									System.out.println("└────────────────────────────────────┘");
+									days = "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30";
+									break;
+								case "5":
+									monthName = "December";
+									startDayOfWeek = 1;
+									System.out.println("                                                                                 ");
+									System.out.println("===================================");
+									System.out.println("You have selected: December 2025");
+									System.out.println("===================================");
+									System.out.println("                                                                                 ");
+									System.out.println("┌────────────────────────────────────┐");
+									System.out.println("│ Mon │ Tue │ Wed │ Thu │ Fri │ Sat │ Sun │");
+									System.out.println("├────────────────────────────────────┤");
+									System.out.println("│  1  │  2  │  3  │  4  │  5 │  6  │  7  │");
+									System.out.println("├────────────────────────────────────┤");
+									System.out.println("│  8  │  9  │ 10  │ 11  │ 12  │ 13  │ 14  │");
+									System.out.println("├────────────────────────────────────┤");
+									System.out.println("│ 15  │ 16  │ 17  │ 18  │ 19  │ 20  │ 21  │");
+									System.out.println("├────────────────────────────────────┤");
+									System.out.println("│ 22  │ 23  │ 24  │ 25  │ 26  │ 27  │ 28  │");
+									System.out.println("├────────────────────────────────────┤");
+									System.out.println("│ 29  │ 30  │ 31  │     │     │     │     │");
+									System.out.println("└────────────────────────────────────┘");
+									days = "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31";
+									break;
+								}
+							} else {
+								System.out.println("Invalid input month.");
+								continue;
+							}
+	
+							boolean backToMonth = false;
+							while (true) {
+								String day = "";
+								boolean validDay = false;
+								String selectedWeekday = "";
+								String[] weekdays = {"", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+	
+								while (!validDay) {
+									System.out.println("┌──────────────────────────────────┐");
+									System.out.println("│ ☰ Choose your day preferred          │");
+									System.out.println("├──────────────────────────────────┤");
+									System.out.println("│ ⟲ Input (B)-Back                     │");
+									System.out.println("└──────────────────────────────────┘");
+									System.out.println("┌───────────────────────┐");
+									System.out.print("│ Enter your choice:  ");
+									day = input.nextLine();
+									System.out.println("└───────────────────────┘");
+	
+									if (day.equalsIgnoreCase("B")) {
+										backToMonth = true;
+										break;
+									}
+	
+									if ((" " + days + " ").contains(" " + day + " ") && !unavailableDates.contains(roomName + " " + day + " of " + monthName)) {
+										validDay = true;
+										int dayNumber = Integer.parseInt(day);
+										int weekdayCounter = startDayOfWeek;
+	
+										for (int i = 1; i < dayNumber; i++) {
+											weekdayCounter++;
+											if (weekdayCounter > 7) {
+												weekdayCounter = 1;
+											}
+										}
+	
+										selectedWeekday = weekdays[weekdayCounter];
+										System.out.println("                                                                                 ");
+	
+										System.out.println("======================================");
+										System.out.println("You selected: " + monthName + " " + day + " " + selectedWeekday + ", 2025");
+										System.out.println("======================================");
+										System.out.println("                                                                                 ");
+                                        
+                                        date = monthName + " " + day + " " + selectedWeekday;
+                                        if (roomName.equals("NORMAL ROOM")) {
+                                            pax = 4;
+                                        } else if (roomName.equals("STANDARD ROOM")) {
+                                            pax = 6;
+          } else if (roomName.equals("LUXURY ROOM")) {
+                                            pax = 8;
+                                        } else if (roomName.equals("VIP ROOM")) {
+                                            pax = 10;
+                                        }
+	
+									} else {
+										System.out.println("Invalid day or day is unavailable for this room.");
+									}
+								}
+								
+								if (backToMonth) {
+									break;
+								}
+	
+								unavailableDates += roomName + " " + day + " of " + monthName + ",";
+	
+								boolean backFromDetails = false;
+								while (true) {
+									System.out.println("┌───────────────────────────────────┐");
+									System.out.println("│       🔶 Input your details.           │");
+									System.out.println("│            Input (B)-back.  🔶         │");
+									System.out.println("├───────────────────────────────────┤");
+	
+									boolean backToDay = false;
+									while (true) {
+										System.out.print(" (B)│➜ Name: ");
+										name = input.nextLine();
+	
+										if (name.equalsIgnoreCase("B")) {
+											backToDay = true;
+											break;
+										}
+										if (!name.isEmpty()) {
+											break;
+										}
+										System.out.println("Invalid input.");
+									}
+									if (backToDay) {
+										unavailableDates = unavailableDates.replace(roomName + " " + day + " of " + monthName + ",", "");
+										backFromDetails = true;
+										break;
+									}
+	
+									System.out.println(" (B)│➜ Date: " + date + ", 2025");
+									System.out.println(" (B)│➜ Pax: " + pax + " (Based on " + roomName + ")");
+	
+									boolean backToName = false;
+									while (true) {
+										System.out.print(" (B)│➜ Contact Number: ");
+										contact = input.nextLine();
+	
+										if (contact.equalsIgnoreCase("B")) {
+											backToName = true;
+											break;
+										}
+	
+										if (!contact.isEmpty() && contact.matches("\\d+")) {
+											break;
+										}
+	
+										System.out.println("Invalid input. Please enter numbers only.");
+									}
+									if (backToName) {
+										continue;
+									}
+	
+									boolean backToContact = false;
+									while (true) {
+										System.out.print(" (B)│➜ Email Address: ");
+										email = input.nextLine();
+										System.out.println("└───────────────────────────────────┘");
+	
+										if (email.equalsIgnoreCase("B")) {
+											backToContact = true;
+											break;
+										}
+										if (!email.isEmpty()) {
+											break;
+										}
+										System.out.println("Invalid input.");
+									}
+									if (backToContact) {
+										continue;
+									}
+									break;
+								}
+								
+								if (backFromDetails) {
+									continue;
+								}
+	
+								System.out.println("                                                                                 ");
+								System.out.println("=======================");
+								System.out.println(" Reserved successful!");
+								System.out.println("======================");
+								System.out.println("                                                                                 ");
+								System.out.println("┌────────────────────────────┐");
+								System.out.println("│ Input (1) to show your receipt. │");
+								System.out.println("└────────────────────────────┘");
+	
+								String viewReceipt = "";
+								while (true) {
+									System.out.print("Enter: ");
+									viewReceipt = input.nextLine();
+									if (viewReceipt.equalsIgnoreCase("1")) {
+										break;
+									}
+									System.out.println("Invalid input");
+								}
+	
+								System.out.println("┌─────────────────────────────┐");
+								System.out.println("        Hotel Reservation      ");
+								System.out.println("             Receipt           ");
+								System.out.println("├─────────────────────────────┤");
+								System.out.println(" Name: " + name);
+								System.out.println(" Date: " + date + ", 2025");
+								System.out.println(" Room: " + roomName);
+								System.out.println(" Price: ₱ " + roomPrice + ".00");
+								System.out.println(" Pax: " + pax);
+								System.out.println(" Contact: " + contact);
+								System.out.println(" Email: " + email);
+								System.out.println("└─────────────────────────────┘");
+	
+								String receipt = "";
+								boolean choices = true;
+								while (choices) {
+									System.out.println("┌───────────────────────────────┐");
+									System.out.println("│  ⚠️ Please review your receipt    │");
+									System.out.println("│     details before confirming.    │");
+									System.out.println("├───────────────────────────────┤");
+	
+									System.out.println("└───────────────────────────────┘");
+									System.out.println("┌─────────────────────────────────┐");
+									System.out.println("│➜ Input (1) to cancel reservation ✖  │");
+									System.out.println("├─────────────────────────────────┤");
+									System.out.println("│➜ Input (2) to confirm reservation ✓ │");
+									System.out.println("└─────────────────────────────────┘");
+									System.out.print("Input: ");
+									receipt = input.nextLine();
+	
+									String reserved = roomName + " " + day + " of " + monthName;
+	
+									switch (receipt) {
+									case "1":
+										System.out.println("Your reservation has been cancelled.");
+										unavailableDates = unavailableDates.replace(reserved + ",", "");
+										choices = false;
+										break;
+									case "2":
+										System.out.println("Thank you! Your reservation is saved.");
+										choices = false;
+										break;
+									default:
+										System.out.println("Invalid input.");
+									}
+								}
+								break;
+							}
+							if (backToMonth) {
+								continue;
+							}
+							break;
+						}
+						
+						if (backToRoom) {
+							continue;
+						}
+						
+						returnToRoomChoice = true;
+					}
+				}
+				break;
+
+			case "2":
+				System.out.println("┌──────────────────────────────────┐");
+				System.out.println("│ ••••••••••••• ABOUT US •••••••••••••  │");
+				System.out.println("├──────────────────────────────────┤");
+				System.out.println("│     Stay a while, feel at home —      │");
+				System.out.println("│     Sweeties Hotel welcomes you.      │");
+				System.out.println("│                                       │");
+				System.out.println("│      👤 Sweeties Hotel                │");
+				System.out.println("│      📍 Tayuman 199, San Carlos       │");
+				System.out.println("│      📞 0994-613-3680                 │");
+				System.out.println("│      📩 sweetiesgroup4@email.com      │");
+				System.out.println("│                                       │");
+				System.out.println("│        🔸Develop the program🔸        │");
+				System.out.println("│  ===================================  │");
+				System.out.println("│    - Planning - (July 29-30, 2025)    │");
+				System.out.println("│    - Groupings - (July 29-31, 2025)   │");
+				System.out.println("│    - Paper - (7-8, 2025)              │");
+				System.out.println("│    - Code - (August 7 and 12, 2025)   │");
+				System.out.println("│                                       │");
+				System.out.println("│        🔸Developed by Group 4🔸       │");
+				System.out.println("│    - Diether B. Agripa                │");
+				System.out.println("│    - Ronel G. Apdua                   │");
+				System.out.println("│    - Franchesca Nicole A. Barquez     │");
+				System.out.println("│    - Kimberly D. Cari                 │");
+				System.out.println("│    - Ashley Rhian C. Duron            │");
+				System.out.println("│    - Greyzie Joyce C. Deleon          │");
+				System.out.println("│    - Prince Youli B. Enriquez         │");
+				System.out.println("│    - John Jeremy M. Medina            │");
+				System.out.println("│    - Jheann Kurt R. Monday            │");
+				System.out.println("└──────────────────────────────────┘");
+
+
+
+				String backInput2;
+				do {
+					System.out.println("┌─────────────────────────────────────┐");
+					System.out.println("│ (B) │ Input (B)-Back to return main menu │");
+					System.out.println("└─────────────────────────────────────┘");
+					System.out.print("Enter: ");
+
+					backInput2 = input.nextLine();
+					if (!backInput2.equalsIgnoreCase("B")) {
+						System.out.println("Invalid input. Please type 'B'.");
+					}
+				} while (!backInput2.equalsIgnoreCase("B"));
+				break;
+
+			case "3":
+				System.out.println("┌─────────────────────────────────────┐");
+				System.out.println("│            🟢 ROOM DETAILS 🟢             │");
+				System.out.println("├─────────────────────────────────────┤");
+				System.out.println("│ (1) ➜ NORMAL ROOM           ₱950 / Night │");
+				System.out.println("│                               4 guests 𐀪  │");
+				System.out.println("│ Includes:                                 │");
+				System.out.println("│ • Single bed                              │");
+				System.out.println("│ • Electric fan                            │");
+				System.out.println("│ • Shared bathroom                         │");
+				System.out.println("│ • Basic toiletries (upon request)         │");
+				System.out.println("│ ========================================= │");
+				System.out.println("│ (2) ➜ STANDARD ROOM      ₱1,500 / Night  │");
+				System.out.println("│                               6 guests 𐀪  │");
+				System.out.println("│ Includes:                                 │");
+				System.out.println("│ • Double bed                              │");
+				System.out.println("│ • Air-conditioning                        │");
+				System.out.println("│ • Private bathroom (hot & cold)           │");
+				System.out.println("│ • Cable TV and free Wi-Fi                 │");
+				System.out.println("│ ========================================= │");
+				System.out.println("│ (3) ➜ LUXURY ROOM        ₱2,800 / Night  │");
+				System.out.println("│                               8 guests 𐀪  │");
+				System.out.println("│ Includes:                                 │");
+				System.out.println("│ • Queen size bed with clean lines         │");
+				System.out.println("│ • Full air-conditioned                    │");
+				System.out.println("│ • Private bathroom with toiletries        │");
+				System.out.println("│ • Free bottled water and coffee           │");
+				System.out.println("│ ========================================= │");
+				System.out.println("│ (4) ➜ VIP ROOM           ₱4,500 / Night  │");
+				System.out.println("│                              10 guests 𐀪  │");
+				System.out.println("│ Includes:                                 │");
+				System.out.println("│ • King size bed                           │");
+				System.out.println("│ • Sofa set and living area                │");
+				System.out.println("│ • 55\" Smart TV in living area             │");
+				System.out.println("│ • Mini bar                                │");
+				System.out.println("└─────────────────────────────────────┘");
+
+				System.out.println("┌─────────────────────────────────────────┐");
+				System.out.println("│     📜 SWEETIES LAMBINGAN HOTEL POLICY 📜     │");
+				System.out.println("├─────────────────────────────────────────┤");
+				System.out.println("│ 1. Once you reserve a date, it will be marked │");
+				System.out.println("│    as unavailable and cannot be booked again. │");
+				System.out.println("│                                               │");
+				System.out.println("│ 2. Reservation is confirmed only after you    │");
+				System.out.println("│    complete the process in this system.       │");
+				System.out.println("│                                               │");
+				System.out.println("│ 3. Refunds or date changes are not allowed    │");
+				System.out.println("│    once the reservation is confirmed.         │");
+				System.out.println("└─────────────────────────────────────────┘");
+				System.out.println("┌─────────────────────────────────────┐");
+				System.out.println("│ (B) │ Input (B)-Back to return main menu │");
+				System.out.println("└─────────────────────────────────────┘");
+
+				String backInput3;
+				do {
+					System.out.print("Enter: ");
+					backInput3 = input.nextLine();
+					if (!backInput3.equalsIgnoreCase("B")) {
+						System.out.println("Invalid input. Please type 'B'.");
+					}
+				} while (!backInput3.equalsIgnoreCase("B"));
+				break;
+
+			case "4":
+				System.out.println("Thank you for choosing Sweeties Hotel. Goodbye!");
+				input.close();
+				return;
+
+			default:
+				System.out.println("Invalid choice. Please enter a number from 1 to 4.");
+			}
+		} while (true);
+	}
+}
